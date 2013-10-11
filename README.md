@@ -2,6 +2,8 @@ Description
 ===========
 
 Installs and configures 
+* Apt
+* Java 1.6 Oracle
 * jRuby
 * Hadoop 1.x
 
@@ -15,7 +17,7 @@ Platform
  
 Tested on:
 
-* Ubuntu 12.04 Precise 3.2.0-23-generic x86_64
+* Linux precise64 3.2.0-23-generic #36-Ubuntu x86_64 GNU/Linux
 
 License and Author
 ==================

@@ -4,16 +4,6 @@ include_recipe "apt"
 
 # Java ################################################################################
 
-#TODO Use attributes instead of hardcoded "vagrant". 
-["/tmp/vagrant-chef", "/tmp/vagrant-chef-cache"].each do |dir|
-  directory dir do
-    owner "vagrant"
-    group "vagrant"
-    mode "0755"
-    action :create
-  end
-end
-
 node.override['java']['install_flavor'] = 'oracle'
 node.override['java']['oracle']['accept_oracle_download_terms'] = true
 node.override['java']['jdk_version'] = '6'
@@ -21,21 +11,19 @@ node.override['java']['url'] = 'jdk-6u45-linux-x64.bin'
 
 include_recipe "java"
 
-# jRuby ###############################################################################
+# jRuby via rbenv #############################################################
 
-node.override['rvm']['default_ruby'] = 'jruby-1.7.3'
-node.override['rvm']['rubies'] = ["jruby-1.7.3"]
-node.override['rvm']['group_users'] = ['vagrant']
+node.override['rbenv']['group_users'] = ['vagrant']
 
-include_recipe "rvm::system"
+include_recipe "rbenv::default"
+include_recipe "rbenv::ruby_build"
 
-bash "append to /etc/environment" do
-  user "root"
-  code <<-EOF
-    echo "JRUBY_OPTS=--1.9" >> /etc/environment
-  EOF
-  not_if "grep -q JRUBY_OPTS /etc/environment"
+rbenv_ruby "jruby-1.7.3"
+
+rbenv_gem "bundler" do
+  ruby_version "jruby-1.7.3"
 end
 
 # Hadoop ##############################################################################
 
+include_recipe "single_node_hadoop_claster"
