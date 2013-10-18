@@ -1,13 +1,14 @@
-# Apt #################################################################################
+# Apt #########################################################################
 
 include_recipe "apt"
 
-# Java ################################################################################
+# Java ########################################################################
 
 node.override['java']['install_flavor'] = 'oracle'
 node.override['java']['oracle']['accept_oracle_download_terms'] = true
 node.override['java']['jdk_version'] = '6'
 node.override['java']['url'] = 'jdk-6u45-linux-x64.bin'
+node.override['java']['java_home'] = '/usr/lib/jvm/jdk1.6.0_45'
 
 include_recipe "java"
 
@@ -24,6 +25,8 @@ rbenv_gem "bundler" do
   ruby_version "jruby-1.7.3"
 end
 
-# Hadoop ##############################################################################
+# Hadoop ######################################################################
+
+node.override['single_node_hadoop_claster']['java']['java_home'] = "/usr/lib/jvm/jdk1.6.0_45"
 
 include_recipe "single_node_hadoop_claster"
