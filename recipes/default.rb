@@ -12,9 +12,17 @@ node.override['java']['java_home'] = '/usr/lib/jvm/jdk1.6.0_45'
 
 include_recipe "java"
 
+# Hadoop ######################################################################
+
+node.override['single_node_hadoop_claster']['java']['java_home'] = "/usr/lib/jvm/jdk1.6.0_45"
+node.override['single_node_hadoop_claster']['user'] = 'hduser'
+node.override['single_node_hadoop_claster']['group'] = 'hadoop'
+
+include_recipe "single_node_hadoop_claster"
+
 # jRuby via rbenv #############################################################
 
-node.override['rbenv']['group_users'] = ['vagrant']
+node.override['rbenv']['group_users'] = ['vagrant', 'hduser']
 
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
@@ -24,9 +32,3 @@ rbenv_ruby "jruby-1.7.3"
 rbenv_gem "bundler" do
   ruby_version "jruby-1.7.3"
 end
-
-# Hadoop ######################################################################
-
-node.override['single_node_hadoop_claster']['java']['java_home'] = "/usr/lib/jvm/jdk1.6.0_45"
-
-include_recipe "single_node_hadoop_claster"
