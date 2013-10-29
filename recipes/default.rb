@@ -15,14 +15,14 @@ include_recipe "java"
 # Hadoop ######################################################################
 
 node.override['single_node_hadoop_claster']['java']['java_home'] = "/usr/lib/jvm/jdk1.6.0_45"
-node.override['single_node_hadoop_claster']['user'] = 'hduser'
+node.override['single_node_hadoop_claster']['user'] = 'vagrant'
 node.override['single_node_hadoop_claster']['group'] = 'hadoop'
 
 include_recipe "single_node_hadoop_claster"
 
 # jRuby via rbenv #############################################################
 
-node.override['rbenv']['group_users'] = ['vagrant', 'hduser']
+node.override['rbenv']['group_users'] = ['vagrant']
 
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
