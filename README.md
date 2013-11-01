@@ -28,6 +28,17 @@ Tested on:
 * vagrant-berkshelf 1.3.3
 * vagrant-omnibus 1.1.1
 
+Usage
+=====
+
+* Install Berkshelf
+* Install Vagrant
+* Install vagrant-berkshelf (and possible vagrant-omnibus) vagrant plugin(s)
+* Create a directory and init Vagrant and Berkshelf
+* Change Vagrantfile and Berksfile according to snippets below
+* Copy single_node_hadoop_claster_wrapper and single_node_hadoop_claster_wrapper to cookbooks/ subdirectory
+* run `vagrant up` :)
+
 Vagrant
 =======
 
