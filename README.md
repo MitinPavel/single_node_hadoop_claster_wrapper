@@ -33,11 +33,17 @@ Usage
 
 * Install Berkshelf
 * Install Vagrant
-* Install vagrant-berkshelf (and possible vagrant-omnibus) vagrant plugin(s)
-* Create a directory and init Vagrant and Berkshelf
+* Install vagrant-berkshelf and (possible) vagrant-omnibus vagrant plugin(s)
+* Create a sandbox-directory and cd to the directory
+* Run `vagrant init`
+* Run `berks init`
 * Change Vagrantfile and Berksfile according to snippets below
-* Copy single_node_hadoop_claster_wrapper and single_node_hadoop_claster_wrapper to cookbooks/ subdirectory
-* run `vagrant up` :)
+* Create `cookbooks/` subdirectory
+* Copy single_node_hadoop_claster_wrapper and single_node_hadoop_claster_wrapper cookbooks to the cookbooks subdirectory
+* Run `vagrant up`
+* Run `vagrant ssh`
+* Being *vagrant* user run `/usr/sbin/start-all.sh`
+* On your host machine open http://localhost:50070 Voilà :)
 
 Vagrant
 =======
