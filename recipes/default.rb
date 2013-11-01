@@ -15,8 +15,7 @@ include_recipe "java"
 # Hadoop ######################################################################
 
 node.override['single_node_hadoop_claster']['java']['java_home'] = "/usr/lib/jvm/jdk1.6.0_45"
-node.override['single_node_hadoop_claster']['user'] = 'vagrant'
-node.override['single_node_hadoop_claster']['group'] = 'hadoop'
+node.override['single_node_hadoop_claster']["user"]["name"] = 'vagrant'
 
 include_recipe "single_node_hadoop_claster"
 
